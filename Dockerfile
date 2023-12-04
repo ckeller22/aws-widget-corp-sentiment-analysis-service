@@ -3,7 +3,7 @@ FROM python:3.11
 
 WORKDIR /code
 
-ENV FLASK_APP=app.py
+ENV FLASK_APP=app/__init__.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 COPY requirements.txt requirements.txt
@@ -13,6 +13,4 @@ EXPOSE 5000
 
 COPY . .
 
-ENTRYPOINT [ "python" ]
-
-CMD ["app.py" ]
+CMD ["flask", "run"]
