@@ -1,6 +1,7 @@
 from flask import Flask
 
 from config import Config
+from app.services import PredictionService
 
 
 def create_app(config_name):
@@ -9,6 +10,8 @@ def create_app(config_name):
     config_module = f"config.{config_name.capitalize()}Config"
 
     app.config.from_object(config_module)
+
+    app.prediction_service = PredictionService()
 
     from app.main import bp as main_bp
     from app.predict import bp as predict_bp
