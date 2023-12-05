@@ -1,8 +1,8 @@
 from flask import request, jsonify, Response
 from app.predict import bp
 from pydantic import ValidationError
-from app.models.PredictionRequest import PredictionRequest
-from app.models.PredictionResponse import PredictionResponse
+from app.models.prediction_request import PredictionRequest
+from app.models.prediction_response import PredictionResponse
 
 
 @bp.route("/predict", methods=["POST"])

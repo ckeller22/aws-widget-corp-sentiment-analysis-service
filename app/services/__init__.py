@@ -1,1 +1,1 @@
-from prediction_service import PredictionService
+from .prediction_service import PredictionService

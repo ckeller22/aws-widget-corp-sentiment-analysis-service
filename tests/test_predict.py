@@ -1,4 +1,4 @@
-from app.models.PredictionResponse import PredictionResponse
+from app.models.prediction_response import PredictionResponse
 from pydantic import ValidationError
 
 
