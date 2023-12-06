@@ -1,10 +1,14 @@
 import pickle
 import os
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.lancaster import LancasterStemmer
 
 
 class PredictionService:
     def __init__(self):
-        self.model = self.load_model()
+        self.load_model()
+        self.load_nltk()
 
     def predict(self, data):
         pass
@@ -18,10 +22,17 @@ class PredictionService:
         try:
             with open(MODEL_PATH, "rb") as file:
                 model = pickle.load(file)
-            return model
+            self.model = model
         except FileNotFoundError:
             print(f"Model file not found: {MODEL_PATH}")
             return None
         except Exception as e:
             print(f"Error loading model: {e}")
             return None
+
+    def load_nltk(self):
+        nltk.download("punkt")
+        nltk.download("stopwords")
+
+        self.stopword_list = stopwords.words("english")
+        self.stemmer = LancasterStemmer()
