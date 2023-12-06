@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 pytest = "*"
+nltk = "*"
+pydantic = "*"
 
 [dev-packages]
 
