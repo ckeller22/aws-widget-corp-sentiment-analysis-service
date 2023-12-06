@@ -1,4 +1,4 @@
-from flask import request, jsonify, Response
+from flask import current_app, request, jsonify, Response
 from app.predict import bp
 from pydantic import ValidationError
 from app.models.prediction_request import PredictionRequest
@@ -15,6 +15,7 @@ def predict():
             "errors": e.errors(),
         }, 400
 
-    response = PredictionResponse(sentiment="positive")
+    sentiment = current_app.prediction_service.get_sentiment(payload.input)
+    response = PredictionResponse(sentiment=sentiment)
 
     return response.model_dump()
