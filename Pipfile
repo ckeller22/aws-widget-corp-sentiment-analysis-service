@@ -8,6 +8,7 @@ flask = "*"
 pytest = "*"
 nltk = "*"
 pydantic = "*"
+flask-cors = "*"
 
 [dev-packages]
 
